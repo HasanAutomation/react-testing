@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme'
 import Header from '.';
+import { findByTestAttr } from '../../utils';
 
 const setUp = (props = {}) => {
     const component = shallow(<Header {...props} />);
@@ -15,14 +16,13 @@ describe('Header component', () => {
         component = setUp();
     })
 
-
     it('Should render without errors', () => {
-        const wrapper = component.find('.headerComponent');
+        const wrapper = findByTestAttr(component, 'headerComponent')
         expect(wrapper.length).toBe(1)
     });
 
     it('Should render the logo properly', () => {
-        const wrapper = component.find('.logoIMG');
+        const wrapper = findByTestAttr(component, 'logoIMG')
         expect(wrapper.length).toBe(1)
     })
 })
